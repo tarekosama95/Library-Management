@@ -9,6 +9,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Borrowing.belongsTo(models.Book, { foreignKey: "book_id" });
+      Borrowing.belongsTo(models.Borrower, { foreignKey: "borrower_id" });
     }
   }
   Borrowing.init(

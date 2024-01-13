@@ -76,6 +76,7 @@ const update = async (req, res) => {
       .json(errorResponse("Something Went wrong, please try again later"));
   }
 };
+
 const show = async (req, res) => {
   try {
     const id = req.params.id;
@@ -130,7 +131,7 @@ const index = async (req, res) => {
       .json(errorResponse("Something Went wrong, please try again later"));
   }
 };
-// Analytics
+
 const analytics = async (req, res) => {
   try {
     const { from, to } = req.query;
@@ -169,25 +170,173 @@ const analytics = async (req, res) => {
       .json(errorResponse("Something Went wrong, please try again later"));
   }
 };
+
 const exportBought = async (req, res) => {
   try {
-    currentMonth = new Date();
-    lastMonth = new Date(currentMonth);
-    lastMonth.setMonth(currentMonth.setMonth() - 1);
-    const bought = await Borrowing.count({
-      where: {
-        status: "Bought",
-        createdAt: { [Op.between]: [currentMonth, lastMonth] },
-      },
-    });
-  } catch (error) {}
+    let { from, to } = req.query;
+    if (from && to) {
+      let borrowings = await Borrowing.findAll({
+        where: {
+          status: "Bought",
+          createdAt: { [Op.between]: [from, to] },
+        },
+        include: [
+          { model: Book, as: "Book" },
+          { model: Borrower, as: "Borrower" },
+        ],
+      });
+      if (borrowings.length === 0) {
+        res
+          .status(200)
+          .json(successResponse(null, "No Bought Files during this period"));
+      } else {
+        const data = borrowings.map((borrowing) => ({
+          Title: borrowing.Book.title,
+          User: borrowing.Borrower.name,
+          Email: borrowing.Borrower.email,
+          Id: borrowing.id,
+          Status: borrowing.status,
+          "Due Date": borrowing.due_date,
+        }));
+        // Init worksheet
+        const workbook = new ExcelJS.Workbook();
+        const worksheet = workbook.addWorksheet("Borrowing Processed");
+        const path = "./files";
+        // Add headers
+        const headers = Object.keys(data[0]);
+        worksheet.addRow(headers);
+        // Add rows
+        data.forEach((row) => {
+          worksheet.addRow(Object.values(row));
+        });
+        return await workbook.xlsx.writeFile(`${path}/bought.xlsx`).then(() => {
+          res.json(successResponse(`${path}/bought.xlsx`, "File downloaded"));
+        });
+      }
+    }
+  } catch (error) {
+    console.log(error);
+    res
+      .status(500)
+      .json(errorResponse("Something Went wrong, please try again later"));
+  }
 };
-const exportReturned = async (req, res) => {};
-const exportOverDue = async (req, res) => {};
+const exportReturned = async (req, res) => {
+  try {
+    let { from, to } = req.query;
+    if (from && to) {
+      let borrowings = await Borrowing.findAll({
+        where: {
+          status: "Returned",
+          createdAt: { [Op.between]: [from, to] },
+        },
+        include: [
+          { model: Book, as: "Book" },
+          { model: Borrower, as: "Borrower" },
+        ],
+      });
+      if (borrowings.length === 0) {
+        res
+          .status(200)
+          .json(successResponse(null, "No Bought Files during this period"));
+      } else {
+        const data = borrowings.map((borrowing) => ({
+          Title: borrowing.Book.title,
+          User: borrowing.Borrower.name,
+          Email: borrowing.Borrower.email,
+          Id: borrowing.id,
+          Status: borrowing.status,
+          "Due Date": borrowing.due_date,
+        }));
+        // Init worksheet
+        const workbook = new ExcelJS.Workbook();
+        const worksheet = workbook.addWorksheet("Borrowing Returned");
+        const path = "./files";
+        // Add headers
+        const headers = Object.keys(data[0]);
+        worksheet.addRow(headers);
+        // Add rows
+        data.forEach((row) => {
+          worksheet.addRow(Object.values(row));
+        });
+        return await workbook.xlsx
+          .writeFile(`${path}/returned.xlsx`)
+          .then(() => {
+            res.json(
+              successResponse(`${path}/returned.xlsx`, "File downloaded")
+            );
+          });
+      }
+    }
+  } catch (error) {
+    console.log(error);
+    res
+      .status(500)
+      .json(errorResponse("Something Went wrong, please try again later"));
+  }
+};
+const exportOverDue = async (req, res) => {
+  try {
+    let { from, to } = req.query;
+    if (from && to) {
+      let borrowings = await Borrowing.findAll({
+        where: {
+          status: "Bought",
+          due_date: { [Op.lt]: new Date() },
+          createdAt: { [Op.between]: [from, to] },
+        },
+        include: [
+          { model: Book, as: "Book" },
+          { model: Borrower, as: "Borrower" },
+        ],
+      });
+      if (borrowings.length === 0) {
+        res
+          .status(200)
+          .json(successResponse(null, "No Bought Files during this period"));
+      } else {
+        const data = borrowings.map((borrowing) => ({
+          Title: borrowing.Book.title,
+          User: borrowing.Borrower.name,
+          Email: borrowing.Borrower.email,
+          Id: borrowing.id,
+          Status: borrowing.status,
+          "Due Date": borrowing.due_date,
+        }));
+        // Init worksheet
+        const workbook = new ExcelJS.Workbook();
+        const worksheet = workbook.addWorksheet("Borrowing overDues");
+        const path = "./files";
+        // Add headers
+        const headers = Object.keys(data[0]);
+        worksheet.addRow(headers);
+        // Add rows
+        data.forEach((row) => {
+          worksheet.addRow(Object.values(row));
+        });
+        return await workbook.xlsx
+          .writeFile(`${path}/overdue.xlsx`)
+          .then(() => {
+            res.json(
+              successResponse(`${path}/overdue.xlsx`, "File downloaded")
+            );
+          });
+      }
+    }
+  } catch (error) {
+    console.log(error);
+    res
+      .status(500)
+      .json(errorResponse("Something Went wrong, please try again later"));
+  }
+};
 module.exports = {
   create,
   update,
   show,
   index,
   analytics,
+  exportBought,
+  exportReturned,
+  exportOverDue,
 };

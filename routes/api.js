@@ -43,6 +43,22 @@ router.delete("/borrowers/:id", borrowerController.remove);
 // Borrowing Process Routes
 router.get("/borrowings", borrowingController.index);
 router.get(
+  "/borrowings/bought/export",
+  validateDate,
+  borrowingController.exportBought
+);
+router.get(
+  "/borrowings/returned/export",
+  validateDate,
+  borrowingController.exportReturned
+);
+
+router.get(
+  "/borrowings/overdue/export",
+  validateDate,
+  borrowingController.exportOverDue
+);
+router.get(
   "/borrowings/analytics",
   validateDate,
   borrowingController.analytics

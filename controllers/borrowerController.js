@@ -44,7 +44,6 @@ const update = async (req, res) => {
         name,
         email,
       });
-      console.log(updated);
       res.status(200).json(successResponse(updated, "Borrower Updated"));
     }
   } catch (error) {
