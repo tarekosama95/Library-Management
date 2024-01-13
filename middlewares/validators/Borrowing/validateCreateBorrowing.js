@@ -8,12 +8,14 @@ const validateCreateBorrowing = [
     .isDate({ format: "YYYY-MM-DD" })
     .withMessage("Due Date must be in the format of  YY-MM-DD")
     .custom(async (value, { req }) => {
-      const now = new Date();
-      const due_date = new Date(value);
-      if (due_date < now) {
-        throw new Error("Due Date Cannot Be a Day Before Today");
+      if (value) {
+        const now = new Date();
+        const due_date = new Date(value);
+        if (due_date < now) {
+          throw new Error("Due Date Cannot Be a Day Before Today");
+        }
+        return true;
       }
-      return true;
     }),
   (req, res, next) => {
     const errors = validationResult(req);

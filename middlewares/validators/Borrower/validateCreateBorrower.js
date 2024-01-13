@@ -15,9 +15,11 @@ const validateCreateBorrower = [
     .isEmail()
     .withMessage("Email is Required")
     .custom(async (value) => {
-      const emailExists = await Borrower.findOne({ where: { email: value } });
-      if (emailExists) {
-        throw new Error("Email Already Exists");
+      if (value) {
+        const emailExists = await Borrower.findOne({ where: { email: value } });
+        if (emailExists) {
+          throw new Error("Email Already Exists");
+        }
       }
       return true;
     }),

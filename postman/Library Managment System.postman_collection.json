@@ -24,10 +24,91 @@
 							"path": [
 								"api",
 								"borrowers"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": null,
+									"disabled": true
+								}
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/borrowers",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"borrowers"
+									],
+									"query": [
+										{
+											"key": "search",
+											"value": null,
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "5"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "4"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 13 Jan 2024 22:21:21 GMT"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1705184492"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "351"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"15f-/rCw/kKgztCVpXsd+itsznOvoZI\""
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Borrowers\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"name\": \"Test2\",\n            \"email\": \"tarekosama12@gmail.com\",\n            \"deletedAt\": null,\n            \"createdAt\": \"2024-01-13T21:38:12.000Z\",\n            \"updatedAt\": \"2024-01-13T21:38:12.000Z\"\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Tarel\",\n            \"email\": \"tarekosama95@gmail.com\",\n            \"deletedAt\": null,\n            \"createdAt\": \"2024-01-13T22:20:57.000Z\",\n            \"updatedAt\": \"2024-01-13T22:20:57.000Z\"\n        }\n    ]\n}"
+						}
+					]
 				},
 				{
 					"name": "Add Borrower",
@@ -36,7 +117,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\" : \"Test2\",\n    \"email\":\"tarekosama12@gmail.com\"\n}",
+							"raw": "{\n    \"name\" : \"Tarek\",\n    \"email\":\"tarekosama95@gmail.com\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -56,7 +137,149 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\" : \"Tarel\",\n    \"email\":\"tarekosama95@gmail.com\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/borrowers",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"borrowers"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "5"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "4"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 13 Jan 2024 22:20:57 GMT"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1705184468"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "185"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"b9-8Qh3hkvdsXdVJgKgupv3lDb2vY4\""
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Borrower Added\",\n    \"data\": {\n        \"id\": 2,\n        \"name\": \"Tarel\",\n        \"email\": \"tarekosama95@gmail.com\",\n        \"updatedAt\": \"2024-01-13T22:20:57.134Z\",\n        \"createdAt\": \"2024-01-13T22:20:57.134Z\"\n    }\n}"
+						},
+						{
+							"name": "422",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/borrowers",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"borrowers"
+									]
+								}
+							},
+							"status": "Unprocessable Entity",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "5"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "4"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 13 Jan 2024 22:21:09 GMT"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1705184480"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "290"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"122-bYLSQbAA3Nqxk/XUMcsZ+u8GmIM\""
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Validation Failure\",\n    \"errors\": [\n        {\n            \"type\": \"field\",\n            \"msg\": \"Name is Required\",\n            \"path\": \"name\",\n            \"location\": \"body\"\n        },\n        {\n            \"type\": \"field\",\n            \"msg\": \"Email Incorrect Format\",\n            \"path\": \"email\",\n            \"location\": \"body\"\n        },\n        {\n            \"type\": \"field\",\n            \"msg\": \"Email is Required\",\n            \"path\": \"email\",\n            \"location\": \"body\"\n        }\n    ]\n}"
+						}
+					]
 				},
 				{
 					"name": "Update Borrower",
@@ -65,7 +288,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\" : \"Tarek Abdelmoniem\",\n    \"email\":\"tarekosama951@gmail.com\"\n}",
+							"raw": "{\n    \"name\" : \"Tarek Osama\",\n    \"email\":\"tarekosama951@gmail.com\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -73,7 +296,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/borrowers/1",
+							"raw": "http://localhost:8080/api/borrowers/{{borrower_id}}",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -82,11 +305,155 @@
 							"path": [
 								"api",
 								"borrowers",
-								"1"
+								"{{borrower_id}}"
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\" : \"Tarek Osama\",\n    \"email\":\"tarekosama951@gmail.com\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/borrowers/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"borrowers",
+										"2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "5"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "4"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 13 Jan 2024 22:21:44 GMT"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1705184515"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "211"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"d3-WCh//jznKH3xKAbkbFT6m7BKxGA\""
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Borrower Updated\",\n    \"data\": {\n        \"id\": 2,\n        \"name\": \"Tarek Osama\",\n        \"email\": \"tarekosama951@gmail.com\",\n        \"deletedAt\": null,\n        \"createdAt\": \"2024-01-13T22:20:57.000Z\",\n        \"updatedAt\": \"2024-01-13T22:21:44.227Z\"\n    }\n}"
+						},
+						{
+							"name": "422",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/borrowers/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"borrowers",
+										"2"
+									]
+								}
+							},
+							"status": "Unprocessable Entity",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "5"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "3"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 13 Jan 2024 22:21:53 GMT"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1705184515"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "281"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"119-XF9mIRccFDBEd7TJ21SvhSeP68w\""
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Validation Failure\",\n    \"errors\": [\n        {\n            \"type\": \"field\",\n            \"msg\": \"Name is Required\",\n            \"path\": \"name\",\n            \"location\": \"body\"\n        },\n        {\n            \"type\": \"field\",\n            \"msg\": \"Invalid value\",\n            \"path\": \"email\",\n            \"location\": \"body\"\n        },\n        {\n            \"type\": \"field\",\n            \"msg\": \"Email is Required\",\n            \"path\": \"email\",\n            \"location\": \"body\"\n        }\n    ]\n}"
+						}
+					]
 				},
 				{
 					"name": "Delete Borrower",
@@ -94,7 +461,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/borrowers/5",
+							"raw": "http://localhost:8080/api/borrowers/{{borrower_id}}",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -103,11 +470,146 @@
 							"path": [
 								"api",
 								"borrowers",
-								"5"
+								"{{borrower_id}}"
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "404",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/borrowers/5",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"borrowers",
+										"5"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "5"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "3"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 13 Jan 2024 22:38:58 GMT"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1705185544"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "48"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"30-Xf7hYybzhw3AzD9uuQFm6WojWJg\""
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Borrower Not Found\"\n}"
+						},
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/borrowers/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"borrowers",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "5"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "4"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 13 Jan 2024 22:39:09 GMT"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1705185560"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "57"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"39-t2VuI30A0YLWWhpVpLXiBpaXtm8\""
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Borrower Deleted\",\n    \"data\": null\n}"
+						}
+					]
 				}
 			]
 		},
@@ -129,10 +631,208 @@
 							"path": [
 								"api",
 								"books"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "test",
+									"disabled": true
+								},
+								{
+									"key": "search",
+									"value": "A Tale of Two cities #1",
+									"disabled": true
+								},
+								{
+									"key": "search",
+									"value": "24567",
+									"disabled": true
+								},
+								{
+									"key": "search",
+									"value": "2",
+									"disabled": true
+								}
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "200 search",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/books?search=test",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"books"
+									],
+									"query": [
+										{
+											"key": "search",
+											"value": "test"
+										},
+										{
+											"key": "search",
+											"value": "A Tale of Two cities #1",
+											"disabled": true
+										},
+										{
+											"key": "search",
+											"value": "24567",
+											"disabled": true
+										},
+										{
+											"key": "search",
+											"value": "2",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "5"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "4"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 13 Jan 2024 22:16:26 GMT"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1705184197"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "249"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"f9-EIoMbRv1Yw86muEO1tzgCxuu0f0\""
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Success\",\n    \"data\": [\n        {\n            \"id\": 5,\n            \"title\": \"A Tale of Two cities #1\",\n            \"isbn\": \"24567\",\n            \"quantity\": 2,\n            \"author\": \"Test\",\n            \"shelf_location\": \"7E\",\n            \"deletedAt\": null,\n            \"createdAt\": \"2024-01-13T22:10:17.000Z\",\n            \"updatedAt\": \"2024-01-13T22:10:17.000Z\"\n        }\n    ]\n}"
+						},
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/books",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"books"
+									],
+									"query": [
+										{
+											"key": "search",
+											"value": "test",
+											"disabled": true
+										},
+										{
+											"key": "search",
+											"value": "A Tale of Two cities #1",
+											"disabled": true
+										},
+										{
+											"key": "search",
+											"value": "24567",
+											"disabled": true
+										},
+										{
+											"key": "search",
+											"value": "2",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "5"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "4"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 13 Jan 2024 22:18:46 GMT"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1705184337"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "437"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1b5-VVRosO09hUaO2c88G5xCS4+Ixnc\""
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Success\",\n    \"data\": [\n        {\n            \"id\": 5,\n            \"title\": \"A Tale of Two cities #1\",\n            \"isbn\": \"24567\",\n            \"quantity\": 2,\n            \"author\": \"Test\",\n            \"shelf_location\": \"7E\",\n            \"deletedAt\": null,\n            \"createdAt\": \"2024-01-13T22:10:17.000Z\",\n            \"updatedAt\": \"2024-01-13T22:10:17.000Z\"\n        },\n        {\n            \"id\": 8,\n            \"title\": \"Book1\",\n            \"isbn\": \"1234\",\n            \"quantity\": 2,\n            \"author\": \"author1\",\n            \"shelf_location\": \"4A\",\n            \"deletedAt\": null,\n            \"createdAt\": \"2024-01-13T22:18:25.000Z\",\n            \"updatedAt\": \"2024-01-13T22:18:25.000Z\"\n        }\n    ]\n}"
+						}
+					]
 				},
 				{
 					"name": "Get Book By id",
@@ -162,7 +862,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"title\": \"A Tale of Two cities #2\",\n    \"isbn\": \"123459\",\n    \"quantity\": 2,\n    \"shelf_location\": \"5C\",\n    \"author\": \"Tarek\"\n}",
+							"raw": "{\n    \"title\": \"Book1\",\n    \"isbn\": \"1234\",\n    \"quantity\": 2,\n    \"shelf_location\": \"4A\",\n    \"author\": \"author1\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -182,24 +882,157 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\": \"A Tale of Two cities #1\",\n    \"isbn\": \"24567\",\n    \"quantity\": 2,\n    \"shelf_location\": \"7E\",\n    \"author\": \"Test\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/books",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"books"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "5"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "3"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 13 Jan 2024 22:10:17 GMT"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1705183821"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "233"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"e9-jqwvevOu7fYe2Yt3KDnFMKSnnH4\""
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Book Added\",\n    \"data\": {\n        \"id\": 5,\n        \"title\": \"A Tale of Two cities #1\",\n        \"isbn\": \"24567\",\n        \"quantity\": 2,\n        \"shelf_location\": \"7E\",\n        \"author\": \"Test\",\n        \"updatedAt\": \"2024-01-13T22:10:17.367Z\",\n        \"createdAt\": \"2024-01-13T22:10:17.367Z\"\n    }\n}"
+						},
+						{
+							"name": "422",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/books",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"books"
+									]
+								}
+							},
+							"status": "Unprocessable Entity",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "5"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "4"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 13 Jan 2024 22:16:13 GMT"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1705184184"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "482"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1e2-5qn44JLO6XP5+4ePPI7EPFiGeS4\""
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Validation Failure\",\n    \"errors\": [\n        {\n            \"type\": \"field\",\n            \"msg\": \"Title Must Be a word\",\n            \"path\": \"title\",\n            \"location\": \"body\"\n        },\n        {\n            \"type\": \"field\",\n            \"msg\": \"ISBN Must Be a number\",\n            \"path\": \"isbn\",\n            \"location\": \"body\"\n        },\n        {\n            \"type\": \"field\",\n            \"msg\": \"Author Must Be a word\",\n            \"path\": \"author\",\n            \"location\": \"body\"\n        },\n        {\n            \"type\": \"field\",\n            \"msg\": \"Quantity Must Be a number\",\n            \"path\": \"quantity\",\n            \"location\": \"body\"\n        },\n        {\n            \"type\": \"field\",\n            \"msg\": \"Shelf Location Must Be a word\",\n            \"path\": \"shelf_location\",\n            \"location\": \"body\"\n        }\n    ]\n}"
+						}
+					]
 				},
 				{
 					"name": "Update Book",
 					"request": {
 						"method": "PUT",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"title\": \"Book24\",\n    \"isbn\": \"12345\",\n    \"quantity\": 25,\n    \"shelf_location\": \"5A\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
 						"url": {
-							"raw": "http://localhost:8080/api/books/2",
+							"raw": "http://localhost:8080/api/books/{{book_id}}",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -208,11 +1041,231 @@
 							"path": [
 								"api",
 								"books",
-								"2"
+								"{{book_id}}"
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\": \"Book24\",\n    \"isbn\": \"12345\",\n    \"quantity\": 25,\n    \"shelf_location\": \"5A\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/books/5",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"books",
+										"5"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "5"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "4"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 13 Jan 2024 22:19:09 GMT"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1705184360"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "236"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"ec-SylZFTKDqXpUU2zHXhRWzw+Pb8Y\""
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Book Updated\",\n    \"data\": {\n        \"id\": 5,\n        \"title\": \"Book24\",\n        \"isbn\": \"12345\",\n        \"quantity\": 25,\n        \"author\": \"Test\",\n        \"shelf_location\": \"5A\",\n        \"deletedAt\": null,\n        \"createdAt\": \"2024-01-13T22:10:17.000Z\",\n        \"updatedAt\": \"2024-01-13T22:19:09.776Z\"\n    }\n}"
+						},
+						{
+							"name": "404 Non Existent Book",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\": \"Book245\",\n    \"isbn\": \"123456\",\n    \"quantity\": 25,\n    \"shelf_location\": \"5A\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/books/9",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"books",
+										"9"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "5"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "4"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 13 Jan 2024 22:19:51 GMT"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1705184402"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "44"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2c-irk09As7Cb3eEsshUXQ/WVJjqyU\""
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Book Not Found\"\n}"
+						},
+						{
+							"name": "422",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/books/{{book_id}}",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"books",
+										"{{book_id}}"
+									]
+								}
+							},
+							"status": "Unprocessable Entity",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "5"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "4"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 13 Jan 2024 22:20:10 GMT"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1705184421"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "401"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"191-Xn9qp2TPHJgMnbV/ewj81tgHzgs\""
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Validation Failure\",\n    \"errors\": [\n        {\n            \"type\": \"field\",\n            \"msg\": \"Title Must Be a word\",\n            \"path\": \"title\",\n            \"location\": \"body\"\n        },\n        {\n            \"type\": \"field\",\n            \"msg\": \"ISBN Must Be a number\",\n            \"path\": \"isbn\",\n            \"location\": \"body\"\n        },\n        {\n            \"type\": \"field\",\n            \"msg\": \"Quantity Must Be a number\",\n            \"path\": \"quantity\",\n            \"location\": \"body\"\n        },\n        {\n            \"type\": \"field\",\n            \"msg\": \"Shelf Location Must Be a word\",\n            \"path\": \"shelf_location\",\n            \"location\": \"body\"\n        }\n    ]\n}"
+						}
+					]
 				},
 				{
 					"name": "Delete Book",
@@ -220,7 +1273,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/books/3",
+							"raw": "http://localhost:8080/api/books/{{book_id}}",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -229,11 +1282,146 @@
 							"path": [
 								"api",
 								"books",
-								"3"
+								"{{book_id}}"
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/books/5",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"books",
+										"5"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "5"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "4"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 13 Jan 2024 22:11:59 GMT"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1705183930"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "53"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"35-uXix24OWdN2QQKBuhtEaIayr1uY\""
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Book Deleted\",\n    \"data\": null\n}"
+						},
+						{
+							"name": "404",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/books/40",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"books",
+										"40"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "5"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "4"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 13 Jan 2024 22:38:28 GMT"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1705185519"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "44"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2c-irk09As7Cb3eEsshUXQ/WVJjqyU\""
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Book Not Found\"\n}"
+						}
+					]
 				}
 			]
 		},
@@ -247,7 +1435,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"due_date\" :\"2024-01-14\"\n}",
+							"raw": "{\n    \"due_date\" :\"2024-01-18\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -255,7 +1443,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/borrower/1/book/1/checkout",
+							"raw": "http://localhost:8080/api/borrower/{{borrower_id}}/book/{{book_id}}/checkout",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -264,31 +1452,339 @@
 							"path": [
 								"api",
 								"borrower",
-								"1",
+								"{{borrower_id}}",
 								"book",
-								"1",
+								"{{book_id}}",
 								"checkout"
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "404 Book",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"due_date\" :\"2024-01-14\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/borrower/1/book/1/checkout",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"borrower",
+										"1",
+										"book",
+										"1",
+										"checkout"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "5"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "4"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 13 Jan 2024 22:22:15 GMT"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1705184546"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "44"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2c-irk09As7Cb3eEsshUXQ/WVJjqyU\""
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Book Not Found\"\n}"
+						},
+						{
+							"name": "404 Borrower",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"due_date\" :\"2024-01-14\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/borrower/6/book/1/checkout",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"borrower",
+										"6",
+										"book",
+										"1",
+										"checkout"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "5"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "3"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 13 Jan 2024 22:26:09 GMT"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1705184770"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "48"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"30-Xf7hYybzhw3AzD9uuQFm6WojWJg\""
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Borrower Not Found\"\n}"
+						},
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"due_date\" :\"2024-01-14\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/borrower/1/book/5/checkout",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"borrower",
+										"1",
+										"book",
+										"5",
+										"checkout"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "5"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "4"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 13 Jan 2024 22:26:46 GMT"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1705184817"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "223"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"df-BKo4jAbifUdn+jT9YSSyJenWaa8\""
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Book Checked out\",\n    \"data\": {\n        \"id\": 3,\n        \"book_id\": 5,\n        \"borrower_id\": 1,\n        \"due_date\": \"2024-01-14T00:00:00.000Z\",\n        \"status\": \"Bought\",\n        \"updatedAt\": \"2024-01-13T22:26:46.858Z\",\n        \"createdAt\": \"2024-01-13T22:26:46.858Z\"\n    }\n}"
+						},
+						{
+							"name": "422 Due Date",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"due_date\" :\"2024-01-10\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/borrower/1/book/8/checkout",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"borrower",
+										"1",
+										"book",
+										"8",
+										"checkout"
+									]
+								}
+							},
+							"status": "Unprocessable Entity",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "5"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "4"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 13 Jan 2024 22:27:04 GMT"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1705184835"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "179"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"b3-XB1yBCpWyah7cvg9WsqwzuYi87A\""
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Validation Failure\",\n    \"errors\": [\n        {\n            \"type\": \"field\",\n            \"value\": \"2024-01-10\",\n            \"msg\": \"Due Date Cannot Be a Day Before Today\",\n            \"path\": \"due_date\",\n            \"location\": \"body\"\n        }\n    ]\n}"
+						}
+					]
 				},
 				{
 					"name": "Return Book",
 					"request": {
 						"method": "PUT",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"due_date\" :\"2024-01-15\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
 						"url": {
-							"raw": "http://localhost:8080/api/borrowings/1/borrower/1/book/1/return",
+							"raw": "http://localhost:8080/api/borrowings/{{borrowing_id}}/borrower/{{borrower_id}}/book/{{book_id}}/return",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -297,16 +1793,242 @@
 							"path": [
 								"api",
 								"borrowings",
-								"1",
+								"{{borrowing_id}}",
 								"borrower",
-								"1",
+								"{{borrower_id}}",
 								"book",
-								"1",
+								"{{book_id}}",
 								"return"
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/borrowings/1/borrower/1/book/1/return",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"borrowings",
+										"1",
+										"borrower",
+										"1",
+										"book",
+										"1",
+										"return"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "5"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "4"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 13 Jan 2024 21:42:33 GMT"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1705182164"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "239"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"ef-ivqcGuDZtuY/xSejtkXl8rXpQeo\""
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Book Returned\",\n    \"data\": {\n        \"id\": 1,\n        \"book_id\": 1,\n        \"borrower_id\": 1,\n        \"status\": \"Returned\",\n        \"due_date\": \"2024-01-14T00:00:00.000Z\",\n        \"deletedAt\": null,\n        \"createdAt\": \"2024-01-13T21:39:06.000Z\",\n        \"updatedAt\": \"2024-01-13T21:40:01.000Z\"\n    }\n}"
+						},
+						{
+							"name": "422 Book",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/borrowings/1/borrower/1/book/11/return",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"borrowings",
+										"1",
+										"borrower",
+										"1",
+										"book",
+										"11",
+										"return"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "5"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "4"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 13 Jan 2024 22:28:28 GMT"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1705184919"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "44"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2c-irk09As7Cb3eEsshUXQ/WVJjqyU\""
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Book Not Found\"\n}"
+						},
+						{
+							"name": "404 Borrower",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/borrowings/1/borrower/14/book/11/return",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"borrowings",
+										"1",
+										"borrower",
+										"14",
+										"book",
+										"11",
+										"return"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "5"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "4"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 13 Jan 2024 22:28:50 GMT"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1705184941"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "48"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"30-Xf7hYybzhw3AzD9uuQFm6WojWJg\""
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Borrower Not Found\"\n}"
+						}
+					]
 				},
 				{
 					"name": "View Borrowings related to borrower",
@@ -314,7 +2036,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/borrower/1/borrowings",
+							"raw": "http://localhost:8080/api/borrower/{{borrower_id}}/borrowings",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -323,20 +2045,322 @@
 							"path": [
 								"api",
 								"borrower",
-								"1",
+								"{{borrower_id}}",
 								"borrowings"
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/borrower/1/borrowings",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"borrower",
+										"1",
+										"borrowings"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "5"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "4"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 13 Jan 2024 22:29:34 GMT"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1705184985"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "437"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1b5-hCkQxZFHwOpVMEsg3DZhFEdzNlM\""
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"User Borrowings History\",\n    \"data\": [\n        {\n            \"id\": 3,\n            \"book_id\": 5,\n            \"borrower_id\": 1,\n            \"status\": \"Bought\",\n            \"due_date\": \"2024-01-14T00:00:00.000Z\",\n            \"deletedAt\": null,\n            \"createdAt\": \"2024-01-13T22:26:46.000Z\",\n            \"updatedAt\": \"2024-01-13T22:26:46.000Z\"\n        },\n        {\n            \"id\": 4,\n            \"book_id\": 8,\n            \"borrower_id\": 1,\n            \"status\": \"Bought\",\n            \"due_date\": \"2024-01-18T00:00:00.000Z\",\n            \"deletedAt\": null,\n            \"createdAt\": \"2024-01-13T22:27:21.000Z\",\n            \"updatedAt\": \"2024-01-13T22:27:21.000Z\"\n        }\n    ]\n}"
+						},
+						{
+							"name": "404",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/borrower/14/borrowings",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"borrower",
+										"14",
+										"borrowings"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "5"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "4"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 13 Jan 2024 22:29:49 GMT"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1705185000"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "48"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"30-Xf7hYybzhw3AzD9uuQFm6WojWJg\""
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Borrower Not Found\"\n}"
+						}
+					]
 				},
 				{
 					"name": "Get All",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/borrowings",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"borrowings"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "OverDue",
+									"disabled": true
+								}
+							]
+						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/borrowings",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"borrowings"
+									],
+									"query": [
+										{
+											"key": "status",
+											"value": "OverDue",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "5"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "3"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 13 Jan 2024 22:29:58 GMT"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1705185000"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "424"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1a8-lAIBDUO29ODTSsl75SAh+2PpG9g\""
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Borrowings\",\n    \"data\": [\n        {\n            \"id\": 3,\n            \"book_id\": 5,\n            \"borrower_id\": 1,\n            \"status\": \"Bought\",\n            \"due_date\": \"2024-01-14T00:00:00.000Z\",\n            \"deletedAt\": null,\n            \"createdAt\": \"2024-01-13T22:26:46.000Z\",\n            \"updatedAt\": \"2024-01-13T22:26:46.000Z\"\n        },\n        {\n            \"id\": 4,\n            \"book_id\": 8,\n            \"borrower_id\": 1,\n            \"status\": \"Bought\",\n            \"due_date\": \"2024-01-18T00:00:00.000Z\",\n            \"deletedAt\": null,\n            \"createdAt\": \"2024-01-13T22:27:21.000Z\",\n            \"updatedAt\": \"2024-01-13T22:27:21.000Z\"\n        }\n    ]\n}"
+						},
+						{
+							"name": "200 overDue",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/borrowings?status=OverDue",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"borrowings"
+									],
+									"query": [
+										{
+											"key": "status",
+											"value": "OverDue"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "5"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "3"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 13 Jan 2024 22:36:39 GMT"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1705185404"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "236"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"ec-U7pEqDSvUNBexlcv7gXCb3pbu1s\""
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Borrowings\",\n    \"data\": [\n        {\n            \"id\": 3,\n            \"book_id\": 5,\n            \"borrower_id\": 1,\n            \"status\": \"Bought\",\n            \"due_date\": \"2024-01-08T00:00:00.000Z\",\n            \"deletedAt\": null,\n            \"createdAt\": \"2024-01-08T22:26:46.000Z\",\n            \"updatedAt\": \"2024-01-13T22:26:46.000Z\"\n        }\n    ]\n}"
+						}
+					]
 				},
 				{
 					"name": "Borrowing Analytics",
@@ -344,7 +2368,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/borrowings/analytics?from=2024-01-11&to=2024-01-14",
+							"raw": "http://localhost:8080/api/borrowings/analytics?from={{from}}&to={{to}}",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -358,11 +2382,11 @@
 							"query": [
 								{
 									"key": "from",
-									"value": "2024-01-11"
+									"value": "{{from}}"
 								},
 								{
 									"key": "to",
-									"value": "2024-01-14"
+									"value": "{{to}}"
 								},
 								{
 									"key": "from",
@@ -377,7 +2401,271 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "400 No Dates Sent",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/borrowings/analytics",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"borrowings",
+										"analytics"
+									],
+									"query": [
+										{
+											"key": "from",
+											"value": "2024-01-13",
+											"disabled": true
+										},
+										{
+											"key": "to",
+											"value": "2024-02-01",
+											"disabled": true
+										},
+										{
+											"key": "from",
+											"value": "tarek",
+											"disabled": true
+										},
+										{
+											"key": "to",
+											"value": "osam",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "5"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "4"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 13 Jan 2024 22:36:58 GMT"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1705185429"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "52"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"34-FD7yl5l/jirN0h5JMQwODTEf52c\""
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Please enter the dates\"\n}"
+						},
+						{
+							"name": "400 Invalid Format",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/borrowings/analytics?from=tarek&to=osam",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"borrowings",
+										"analytics"
+									],
+									"query": [
+										{
+											"key": "from",
+											"value": "2024-01-13",
+											"disabled": true
+										},
+										{
+											"key": "to",
+											"value": "2024-02-01",
+											"disabled": true
+										},
+										{
+											"key": "from",
+											"value": "tarek"
+										},
+										{
+											"key": "to",
+											"value": "osam"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "5"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "4"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 13 Jan 2024 22:37:26 GMT"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1705185457"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "99"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"63-lJPnhzHlDwDsgbHafilx6KUMuM8\""
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Use the format \\\"YY-MM-DD\\\" as the format for the start and end dates\"\n}"
+						},
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/borrowings/analytics?from=2024-01-07&to=2024-02-01",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"borrowings",
+										"analytics"
+									],
+									"query": [
+										{
+											"key": "from",
+											"value": "2024-01-07"
+										},
+										{
+											"key": "to",
+											"value": "2024-02-01"
+										},
+										{
+											"key": "from",
+											"value": "tarek",
+											"disabled": true
+										},
+										{
+											"key": "to",
+											"value": "osam",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "5"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "3"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 13 Jan 2024 22:37:51 GMT"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1705185475"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "115"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"73-dgvIqsw8n25/iVt7SQWsZToBim0\""
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Borrowings Report\",\n    \"data\": {\n        \"Total Bought : \": 3,\n        \"Total Returned : \": 0,\n        \"Total OverDue\": 1\n    }\n}"
+						}
+					]
 				},
 				{
 					"name": "Export Bought Borrowings",
@@ -385,7 +2673,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/borrowings/bought/export?from=2024-01-11&to=2024-01-14",
+							"raw": "http://localhost:8080/api/borrowings/bought/export?from={{from}}&to={{to}}",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -400,11 +2688,11 @@
 							"query": [
 								{
 									"key": "from",
-									"value": "2024-01-11"
+									"value": "{{from}}"
 								},
 								{
 									"key": "to",
-									"value": "2024-01-14"
+									"value": "{{to}}"
 								}
 							]
 						}
@@ -417,7 +2705,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/borrowings/returned/export?from=2024-01-11&to=2024-01-14",
+							"raw": "http://localhost:8080/api/borrowings/returned/export?from={{from}}&to={{to}}",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -432,11 +2720,11 @@
 							"query": [
 								{
 									"key": "from",
-									"value": "2024-01-11"
+									"value": "{{from}}"
 								},
 								{
 									"key": "to",
-									"value": "2024-01-14"
+									"value": "{{to}}"
 								}
 							]
 						}
@@ -447,11 +2735,82 @@
 					"name": "Export OverDue Borrowings",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/borrowings/overdue/export?from={{from}}&to={{to}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"borrowings",
+								"overdue",
+								"export"
+							],
+							"query": [
+								{
+									"key": "from",
+									"value": "{{from}}"
+								},
+								{
+									"key": "to",
+									"value": "{{to}}"
+								}
+							]
+						}
 					},
 					"response": []
 				}
 			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "book_id",
+			"value": "1",
+			"type": "string"
+		},
+		{
+			"key": "borrower_id",
+			"value": "1",
+			"type": "string"
+		},
+		{
+			"key": "borrowing_id",
+			"value": "1",
+			"type": "string"
+		},
+		{
+			"key": "from",
+			"value": "2024-01-10",
+			"type": "string"
+		},
+		{
+			"key": "to",
+			"value": "2024-01-16",
+			"type": "string"
 		}
 	]
 }

@@ -3,16 +3,29 @@ const { Book } = require("../../../models");
 const { validationErrorResponse } = require("../../../apiResponse");
 
 const validateCreateBook = [
-  body("title").isString().withMessage("Title Must Be a word"),
+  body("title")
+    .isString()
+    .withMessage("Title Must Be a word")
+    .custom(async (value) => {
+      if (value) {
+        const bookExists = await Book.findOne({ where: { title: value } });
+        if (bookExists) {
+          throw new Error("Book Already Exists");
+        }
+        return true;
+      }
+    }),
   body("isbn")
     .isNumeric()
     .withMessage("ISBN Must Be a number")
     .custom(async (value) => {
-      const bookExists = await Book.findOne({ where: { isbn: value } });
-      if (bookExists) {
-        throw new Error("ISBN Already Exists");
+      if (value) {
+        const bookExists = await Book.findOne({ where: { isbn: value } });
+        if (bookExists) {
+          throw new Error("ISBN Already Exists");
+        }
+        return true;
       }
-      return true;
     }),
   body("author").isString().withMessage("Author Must Be a word"),
   body("quantity").isNumeric().withMessage("Quantity Must Be a number"),

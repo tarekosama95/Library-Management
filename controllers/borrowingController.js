@@ -13,13 +13,13 @@ const create = async (req, res) => {
     const book = await Book.findByPk(book_id);
     const { due_date } = req.body;
     if (!borrower) {
-      res.status(404).json(errorResponse("Borrower Not Found"));
+      return res.status(404).json(errorResponse("Borrower Not Found"));
     }
     if (!book) {
-      res.status(404).json(errorResponse("Book Not Found"));
+      return res.status(404).json(errorResponse("Book Not Found"));
     }
     if (book.quantity <= 0) {
-      res.status(200).json(successResponse("Book Out of stock"));
+      return res.status(200).json(successResponse("Book Out of stock"));
     } else {
       added = await Borrowing.create({
         book_id: book.id,
@@ -51,13 +51,13 @@ const update = async (req, res) => {
     const book = await Book.findByPk(book_id);
     const borrowing = await Borrowing.findByPk(borrowing_id);
     if (!borrower) {
-      res.status(404).json(errorResponse("Borrower Not Found"));
+      return res.status(404).json(errorResponse("Borrower Not Found"));
     }
     if (!book) {
-      res.status(404).json(errorResponse("Book Not Found"));
+      return res.status(404).json(errorResponse("Book Not Found"));
     }
     if (!borrowing) {
-      res.status(404).json(errorResponse("Borrowing Not Found"));
+      return res.status(404).json(errorResponse("Borrowing Not Found"));
     } else {
       updated = await borrowing.update({
         status: "Returned",
@@ -82,7 +82,7 @@ const show = async (req, res) => {
     const id = req.params.id;
     const borrower = await Borrower.findByPk(id);
     if (!borrower) {
-      res.status(404).json(errorResponse("Borrower Not Found"));
+      return res.status(404).json(errorResponse("Borrower Not Found"));
     } else {
       const borrowings = await Borrowing.findAll({
         where: { borrower_id: borrower.id },
@@ -117,7 +117,7 @@ const index = async (req, res) => {
           where: { status: "Bought", due_date: { [Op.lt]: new Date() } },
         });
       } else {
-        res.status(404).json(errorResponse("Not Found"));
+        return res.status(404).json(errorResponse("Not Found"));
         return;
       }
     } else {

@@ -55,7 +55,7 @@ const show = async (req, res) => {
     const { id } = req.params;
     const book = await Book.findByPk(id);
     if (!book) {
-      res.status(404).json(errorResponse("Book Not Found"));
+      return res.status(404).json(errorResponse("Book Not Found"));
     } else {
       res.status(200).json(successResponse(book, "Book Data Retrieved"));
     }
@@ -74,7 +74,7 @@ const update = async (req, res) => {
     const { title, isbn, quantity, shelf_location, author } = req.body;
     const book = await Book.findByPk(id);
     if (!book) {
-      res.status(404).json(errorResponse("Book Not Found"));
+      return res.status(404).json(errorResponse("Book Not Found"));
     } else {
       updated = await book.update({
         title,
@@ -98,7 +98,7 @@ const remove = async (req, res) => {
     const { id } = req.params;
     const book = await Book.findByPk(id);
     if (!book) {
-      res.status(404).json(errorResponse("Book Not Found"));
+      return res.status(404).json(errorResponse("Book Not Found"));
     } else {
       const deleted = await book.destroy();
       if (deleted) {

@@ -38,7 +38,7 @@ const update = async (req, res) => {
     const { name, email } = req.body;
     const borrower = await Borrower.findByPk(id);
     if (!borrower) {
-      res.status(404).json(errorResponse("Borrower Not Found"));
+      return res.status(404).json(errorResponse("Borrower Not Found"));
     } else {
       updated = await borrower.update({
         name,
@@ -60,7 +60,7 @@ const remove = async (req, res) => {
     const id = req.params.id;
     const borrower = await Borrower.findByPk(id);
     if (!borrower) {
-      res.status(404).json(errorResponse("Borrower Not Found"));
+      return res.status(404).json(errorResponse("Borrower Not Found"));
     } else {
       const deleted = await borrower.destroy();
       if (deleted) {

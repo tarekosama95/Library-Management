@@ -10,13 +10,15 @@ const validateUpdateBorrower = [
     .isEmail()
     .withMessage("Email is Required")
     .custom(async (value, { req }) => {
-      const emailExists = await Borrower.findOne({
-        where: { id: { [Op.ne]: req.params.id }, email: value },
-      });
-      if (emailExists) {
-        throw new Error("Email Already Exists");
+      if (value) {
+        const emailExists = await Borrower.findOne({
+          where: { id: { [Op.ne]: req.params.id }, email: value },
+        });
+        if (emailExists) {
+          throw new Error("Email Already Exists");
+        }
+        return true;
       }
-      return true;
     }),
   (req, res, next) => {
     const errors = validationResult(req);

@@ -4,7 +4,18 @@ const { validationErrorResponse } = require("../../../apiResponse");
 const { Op } = require("sequelize");
 
 const validateUpdateBook = [
-  body("title").isString().withMessage("Title Must Be a word"),
+  body("title")
+    .isString()
+    .withMessage("Title Must Be a word")
+    .custom(async (value) => {
+      if (value) {
+        const bookExists = await Book.findOne({ where: { title: value } });
+        if (bookExists) {
+          throw new Error("Book Already Exists");
+        }
+        return true;
+      }
+    }),
   body("isbn")
     .isNumeric()
     .withMessage("ISBN Must Be a number")
