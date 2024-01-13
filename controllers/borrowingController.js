@@ -201,7 +201,6 @@ const exportBought = async (req, res) => {
         // Init worksheet
         const workbook = new ExcelJS.Workbook();
         const worksheet = workbook.addWorksheet("Borrowing Processed");
-        const path = "./files";
         // Add headers
         const headers = Object.keys(data[0]);
         worksheet.addRow(headers);
@@ -209,8 +208,14 @@ const exportBought = async (req, res) => {
         data.forEach((row) => {
           worksheet.addRow(Object.values(row));
         });
-        return await workbook.xlsx.writeFile(`${path}/bought.xlsx`).then(() => {
-          res.json(successResponse(`${path}/bought.xlsx`, "File downloaded"));
+
+        res.setHeader(
+          "Content-Type",
+          "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+        );
+
+        return await workbook.xlsx.write(res).then(() => {
+          res.end();
         });
       }
     }
@@ -251,7 +256,6 @@ const exportReturned = async (req, res) => {
         // Init worksheet
         const workbook = new ExcelJS.Workbook();
         const worksheet = workbook.addWorksheet("Borrowing Returned");
-        const path = "./files";
         // Add headers
         const headers = Object.keys(data[0]);
         worksheet.addRow(headers);
@@ -259,13 +263,15 @@ const exportReturned = async (req, res) => {
         data.forEach((row) => {
           worksheet.addRow(Object.values(row));
         });
-        return await workbook.xlsx
-          .writeFile(`${path}/returned.xlsx`)
-          .then(() => {
-            res.json(
-              successResponse(`${path}/returned.xlsx`, "File downloaded")
-            );
-          });
+
+        res.setHeader(
+          "Content-Type",
+          "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+        );
+
+        return await workbook.xlsx.write(res).then(() => {
+          res.end();
+        });
       }
     }
   } catch (error) {
@@ -314,13 +320,16 @@ const exportOverDue = async (req, res) => {
         data.forEach((row) => {
           worksheet.addRow(Object.values(row));
         });
-        return await workbook.xlsx
-          .writeFile(`${path}/overdue.xlsx`)
-          .then(() => {
-            res.json(
-              successResponse(`${path}/overdue.xlsx`, "File downloaded")
-            );
-          });
+
+        res.setHeader(
+          "Content-Type",
+          "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+        );
+        res.setHeader("Content-Disposition");
+
+        return await workbook.xlsx.write(res).then(() => {
+          res.end();
+        });
       }
     }
   } catch (error) {
